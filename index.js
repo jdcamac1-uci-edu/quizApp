@@ -125,8 +125,7 @@ function buildQuiz(){
 /**
  * Finds the answer option that user selected.
  *
- * @return 	The letter value of the answer element that is selected, or if no answer is selected,
- * 			the value of an empty Object is returned
+ * @return 	The letter value of the answer element that is selected, or if no answer is selected, the value of an empty Object is returned
  */
 function findSelectedAnswer(index, answerContainer){
     answerSelector = `input[name=question${index}]:checked`;
