@@ -141,7 +141,6 @@ function findSelectedAnswer(index, answerContainer){
  *
  * @return {Boolean} Returns true if the question's correct answer matches the user's answer.
  */
-
 function answerIsCorrect(questionElement, userAnswer){
     return questionElement.answer == userAnswer;
 }
@@ -173,7 +172,6 @@ function showResults(){
 buildQuiz();
 
 const slides = document.querySelectorAll(".slide");
-
 
 showSlide(0);
 
