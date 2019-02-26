@@ -38,6 +38,11 @@ const questions = [
     }
 ]
 
+/**
+ * Displays the Previous, Next, and Submit buttons based on the slide number
+ * 
+ * @param {number} currentSlide - The current slide number
+ */
 function showButtons(currentSlide){
     if (currentSlide == 0)
     {
@@ -58,6 +63,10 @@ function showButtons(currentSlide){
     }
 }
 
+/** Displays a new question slide to the user
+ * 
+ * @param {number} newSlide - The number of the slide to be displayed
+ */
 function showSlide(newSlide){
     slides[currentSlide].classList.remove('active-slide');
     slides[newSlide].classList.add('active-slide');
@@ -65,16 +74,29 @@ function showSlide(newSlide){
     showButtons(currentSlide);
 }
 
+/* Displays the next question slide to the user. */
 function showNextSlide(){
     showSlide(currentSlide + 1);
 }
 
+/* Displays the previous question slide to the user.*/
 function showPrevSlide(){
     showSlide(currentSlide - 1);
 }
 
+
+/**
+ * Builds the HTML for each question and it's multiple choice answers
+ *
+ * The HTML puts the radio input inside .answers, and puts .questions and .answers inside .slide
+ * 
+ * @param {Object} questionELement 			- A dictionary of a question and it's answer options
+ * @param {string} questionElement.question - The text of the question
+ * @param {Object} questionElement.options 	- A dictionary of letters and their answer option
+ * 
+ * @return {string} The HTML to build the question slide
+ */
 function buildQuestion(questionElement, index){
-    //take the question element and add return the html to build it - questions and answers
     const answers = [];
     for (option in questionElement.options)
     {
@@ -91,6 +113,7 @@ function buildQuestion(questionElement, index){
             </div>`
 }
 
+/* Builds the whole quiz: every question and their answer options. */
 function buildQuiz(){
     const output = [];
     questions.forEach((questionElement, index) => {
@@ -99,15 +122,38 @@ function buildQuiz(){
     quizContainer.innerHTML = output.join('');
 }
 
+/**
+ * Finds the answer option that user selected.
+ *
+ * @return 	The letter value of the answer element that is selected, or if no answer is selected,
+ * 			the value of an empty Object is returned
+ */
 function findSelectedAnswer(index, answerContainer){
     answerSelector = `input[name=question${index}]:checked`;
     return (answerContainer.querySelector(answerSelector) || {}).value;
 }
 
+/**
+ * Evaluations whether a user's answer to a question is correct.
+ *
+ * @param {Object} questionELement 			- A dictionary of a question and it's answer options
+ * @param {string} questionElement.question - The text of the question
+ * @param {string} userAnswer				- The letter of the user's answer to a question
+ *
+ * @return {Boolean} Returns true if the question's correct answer matches the user's answer.
+ */
+
 function answerIsCorrect(questionElement, userAnswer){
     return questionElement.answer == userAnswer;
 }
 
+
+/**
+ * Displays the user's results as the number correct out of total number of questions.
+ *
+ * For questions the user got correct, the answers will display in green.
+ * For questions teh user got wrong, the answers will display in red. 
+ */
 function showResults(){
     const answerContainers = quizContainer.querySelectorAll(".answers");
     let numCorrect = 0;
