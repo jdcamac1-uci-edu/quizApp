@@ -90,9 +90,9 @@ function showPrevSlide(){
  *
  * The HTML puts the radio input inside .answers, and puts .questions and .answers inside .slide
  * 
- * @param {Object} questionELement 			- A dictionary of a question and it's answer options
+ * @param {Object} questionELement - A dictionary of a question and it's answer options
  * @param {string} questionElement.question - The text of the question
- * @param {Object} questionElement.options 	- A dictionary of letters and their answer option
+ * @param {Object} questionElement.options - A dictionary of letters and their answer option
  * 
  * @return {string} The HTML to build the question slide
  */
@@ -136,9 +136,9 @@ function findSelectedAnswer(index, answerContainer){
 /**
  * Evaluations whether a user's answer to a question is correct.
  *
- * @param {Object} questionELement 			- A dictionary of a question and it's answer options
+ * @param {Object} questionELement - A dictionary of a question and it's answer options
  * @param {string} questionElement.question - The text of the question
- * @param {string} userAnswer				- The letter of the user's answer to a question
+ * @param {string} userAnswer - The letter of the user's answer to a question
  *
  * @return {Boolean} Returns true if the question's correct answer matches the user's answer.
  */
